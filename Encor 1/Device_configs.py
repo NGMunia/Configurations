@@ -165,3 +165,4 @@ with open("C:\\Users\\Munia-Virtual\\Desktop\\Scripts\\Configurations\\snmp.txt"
 output=net_connect.send_config_set(LAN)
 output=net_connect.send_config_set(dhcp)
 net_connect.save_config()
+net_connect.disconnect()
