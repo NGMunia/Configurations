@@ -1,4 +1,5 @@
 
+#Zone based firewall
 with open("C:\\Users\\Munia-Virtual\\Desktop\\Scripts\\Configurations\\Zone-based-firewall.txt","x") as f:
     f.write("ip access-list extended zbf-acl\n")
     f.write("permit tcp any any eq 443\n")
