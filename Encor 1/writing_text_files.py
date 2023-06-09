@@ -123,7 +123,7 @@ with open("C:\\Users\\Munia-Virtual\\Desktop\\Scripts\\Configurations\\Zone-base
     f.write("interface e0/1\n")
     f.write("zone-member security Outside\n")
 
-    f.write("zone-pair security Inside_Outside_Zone\n")
+    f.write("zone-pair security Inside_Outside_Zone source Inside destination Outside\n")
     f.write("service-policy type inspect Inside_Outside_Policy\n")
 
 
