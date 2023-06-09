@@ -13,7 +13,7 @@ with open("C:\\Users\\Munia-Virtual\\Desktop\\Scripts\\Configurations\\Zone-base
     f.write("inspect\n")
 
     f.write("zone-security Inside\n")
-    f.write("sone-security Outside\n")
+    f.write("zone-security Outside\n")
     f.write("interface e0/0.255\n")
     f.write("zone-member security Inside\n")
     f.write("interface e0/1\n")
