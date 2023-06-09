@@ -1,0 +1,23 @@
+ip access-list extended zbf-acl
+permit tcp any any eq 443
+permit tcp any any eq 80
+permit icmp any any echo-reply
+permit udp any any
+exit
+class-map type inspect Inside_Outside_class
+match access-group name zbf-acl
+exit
+policy-map type inspect Inside_Outside_Policy
+class Inside_Outside_class
+inspect
+exit
+zone security Inside
+zone security Outside
+interface e0/0.255
+zone-member security Inside
+interface e0/1
+zone-member security Outside
+zone-pair security Inside_Outside source Inside destination Outside
+service-policy type inspect Inside_Outside_Policy
+end
+write memory

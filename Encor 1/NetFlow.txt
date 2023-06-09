@@ -1,0 +1,6 @@
+ip flow-export version 9
+ip flow-export destination 10.1.10.254 9996
+ip flow-top-talkers
+top 5
+sort-by bytes
+exit

@@ -1,0 +1,26 @@
+class-map match-any Scavenger-class
+match protocol netflix
+match protocol bittorrent
+class-map match-any social-media-class
+match protocol facebook
+match protocol twitter
+match protocol instagram
+class-map match-any mission-critical-class
+match protocol dns
+exit
+policy-map Internet_policy
+class Scavenger-class
+drop
+class social-media-class
+set dscp cs1
+police 64k conform-action transmit exceed-action drop
+exit
+exit
+class mission-critical-class
+set dscp af31
+bandwidth percent 20
+exit
+class class-default
+set dscp default
+fair-queue
+exit

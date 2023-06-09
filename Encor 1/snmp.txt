@@ -1,0 +1,8 @@
+ip access-list standard snmp-acl
+permit host 10.1.10.254
+exit
+snmp-server community xyz_routers ro snmp-acl
+snmp-server system-shutdown
+snmp-server enable traps config
+snmp-server host 10.1.255.254 traps version 2c xyz_routers
+do write

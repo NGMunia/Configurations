@@ -1,0 +1,35 @@
+ip access-list extended Copp_routing_acl
+permit ospf any host 224.0.0.6
+permit ospf any host 224.0.0.5
+exit
+ip access-list extended Copp_icmp_acl
+permit icmp any any
+exit
+ip access-list extended Copp_management_acl
+permit udp host 10.1.10.254 any eq 161
+permit tcp any any eq 22
+class-map match-any Copp_routing_class
+match access-group name Copp_routing_acl
+class-map match-any Copp_icmp_class
+match access-group name Copp_icmp_acl
+class-map match-any Copp_management_class
+match access-group name Copp_management_acl
+exit
+policy-map Copp_policy
+class Copp_routing_class
+police 64k conform-action transmit exceed-action transmit
+exit
+exit
+class Copp_icmp_class
+police 8k conform-action transmit exceed-action drop
+exit
+exit
+class Copp_management_class
+police 128k conform-action transmit exceed-action transmit
+exit
+exit
+exit
+control-plane
+service-policy input Copp_policy
+end
+write

@@ -1,0 +1,8 @@
+ip domain lookup
+ip name-server 8.8.8.8
+ip name-server 8.8.4.4
+ntp server ke.pool.ntp.org
+ntp update-calendar
+clock timezone GMT +3
+service timestamps log datetime localtime year
+service timestamps debug datetime localtime year

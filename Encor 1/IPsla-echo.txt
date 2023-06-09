@@ -1,0 +1,7 @@
+ip sla 1
+icmp-echo 8.8.8.8
+frequency 10
+exit
+ip sla schedule 1 start-time now life forever
+end
+write
