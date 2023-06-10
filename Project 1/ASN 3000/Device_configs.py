@@ -1,7 +1,7 @@
 #BGP configuration:
 from netmiko import ConnectHandler
 
-#C2000
+#C3000
 from Device_list import C3000 #Route reflector 
 net_connect=ConnectHandler(**C3000)
 net_connect.enable()
@@ -23,7 +23,7 @@ net_connect.save_config()
 net_connect.disconnect()
 
 
-#A2000
+#A3000
 from Device_list import A3000
 net_connect=ConnectHandler(**A3000)
 net_connect.enable()
@@ -38,7 +38,7 @@ net_connect.disconnect()
 
 
 
-#D2000
+#D3000
 from Device_list import D3000
 net_connect=ConnectHandler(**D3000)
 net_connect.enable()
@@ -53,7 +53,7 @@ net_connect.save_config()
 net_connect.disconnect()
 
 
-#E2000
+#E3000
 from Device_list import E3000
 net_connect=ConnectHandler(**E3000)
 net_connect.enable()
