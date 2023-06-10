@@ -28,7 +28,7 @@ from Device_list import A3000
 net_connect=ConnectHandler(**A3000)
 net_connect.enable()
 bgp_comms=["router bgp 3000",
-           "neighbor 3.3.3.3 remote-as 2000",
+           "neighbor 3.3.3.3 remote-as 3000",
            "neighbor 3.3.3.3 update-source lo0",
            "neighbor 3.3.3.3 next-hop-self",
            "neighbor 172.128.4.1 remote-as 2000"]
@@ -43,7 +43,7 @@ from Device_list import D3000
 net_connect=ConnectHandler(**D3000)
 net_connect.enable()
 bgp_comms=["router bgp 3000",
-           "neighbor 3.3.3.3 remote-as 2000",
+           "neighbor 3.3.3.3 remote-as 3000",
            "neighbor 3.3.3.3 update-source lo0",
            "network 44.67.28.0 mask 255.255.255.252",
            "neighbor 44.67.28.2 remote-as 4000",
@@ -58,7 +58,7 @@ from Device_list import E3000
 net_connect=ConnectHandler(**E3000)
 net_connect.enable()
 bgp_comms=["router bgp 3000",
-           "neighbor 3.3.3.3 remote-as 2000",
+           "neighbor 3.3.3.3 remote-as 3000",
            "neighbor 3.3.3.3 update-source lo0",
            "neighbor 3.3.3.3 next-hop-self",
            "network 32.19.86.0 mask 255.255.255.252",
