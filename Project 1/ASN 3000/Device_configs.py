@@ -32,6 +32,8 @@ bgp_comms=["router bgp 3000",
 ouput=net_connect.send_config_set(bgp_comms)
 net_connect.save_config()
 net_connect.disconnect()
+print(ouput)
+print("\n")
 
 
 
@@ -48,7 +50,8 @@ bgp_comms=["router bgp 3000",
 ouput=net_connect.send_config_set(bgp_comms)
 net_connect.save_config()
 net_connect.disconnect()
-
+print(ouput)
+print("\n")
 
 #E3000
 from Device_list import E3000
@@ -63,4 +66,4 @@ bgp_comms=["router bgp 3000",
 ouput=net_connect.send_config_set(bgp_comms)
 net_connect.save_config()
 net_connect.disconnect()
-
+print(ouput)
