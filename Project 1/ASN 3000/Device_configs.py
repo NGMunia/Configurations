@@ -14,9 +14,9 @@ bgp_comms=["router bgp 3000",
            "neighbor 2.2.2.2 route-reflector-client"
            "neighbor 4.4.4.4 remote-as 3000",
            "neighbor 4.4.4.4 update-source lo0",
-           "neighbor 4.4.4.4 route-reflector-client"
+           "neighbor 4.4.4.4 route-reflector-client",
            "neighbor 5.5.5.5 remote-as 3000",
-           "neighbor 5.5.5.5 update-source lo0"
+           "neighbor 5.5.5.5 update-source lo0",
            "neighbor 5.5.5.5 route-reflector-client"]
 ouput=net_connect.send_config_set(bgp_comms)
 net_connect.save_config()
