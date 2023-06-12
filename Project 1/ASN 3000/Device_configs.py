@@ -28,7 +28,7 @@ bgp_comms=["router bgp 3000",
            "neighbor 3.3.3.3 remote-as 3000",
            "neighbor 3.3.3.3 update-source lo0",
            "neighbor 3.3.3.3 next-hop-self",
-           "neighbor 172.128.4.1 remote-as 2000"]
+           "neighbor 173.128.4.1 remote-as 2000"]
 ouput=net_connect.send_config_set(bgp_comms)
 net_connect.save_config()
 net_connect.disconnect()

@@ -16,8 +16,11 @@ bgp_comms=["router bgp 1000",
            "network 200.165.201.0 mask 255.255.255.252",
            "aggregate-address 200.165.201.0 255.255.255.0 summary-only"]
 output=net_connect.send_config_set(bgp_comms)
+print(output)
 net_connect.save_config()
 net_connect.disconnect()
+print("\n")
+
 
 #B1000    
 from Device_list import B1000
@@ -28,12 +31,25 @@ bgp_comms=["router bgp 1000",
            "neighbor 1.1.1.1 update-source lo0",
            "neighbor 1.1.1.1 next-hop-self",
            "neighbor 173.128.1.1 remote-as 2000",
-           "neighbor 173.128.1.1 filter-list 10 out"]
-commands=["ip as-path access-list 10 permit ^$"]
+           "neighbor 173.128.1.1 filter-list 10 out",
+           "neighbor 173.128.1.1 route-map MAP-1 in"]
+commands=["ip as-path access-list 10 permit ^$",
+          "ip as-path access-list 20 permit 4000$",
+          "ip as-path access-list 30 permit 5000$",
+          "route-map MAP-1 permit 20",
+          "match as-path 20",
+          "match as-path 30",
+          "set local-preference 300",
+          "route-map MAP-1 permit 30"]
 output=net_connect.send_config_set(bgp_comms)
+print(output)
+print('\n')
 output=net_connect.send_config_set(commands)
+print(output)
 net_connect.save_config()
 net_connect.disconnect()
+print("\n")
+
 
 #C1000
 from Device_list import C1000
@@ -44,9 +60,20 @@ bgp_comms=["router bgp 1000",
            "neighbor 1.1.1.1 update-source lo0",
            "neighbor 1.1.1.1 next-hop-self",
            "neighbor 173.128.2.1 remote-as 2000",
-           "neighbor 173.128.2.1 filter-list 10 out"]
-commands=["ip as-path access-list 10 permit ^$"]
+           "neighbor 173.128.2.1 filter-list 10 out",
+           "neighbor 173.128.2.1 route-map MAP-1 in"]
+commands=["ip as-path access-list 10 permit ^$",
+          "ip as-path access-list 20 permit 2000$",
+          "ip as-path access-list 30 permit 3000$",
+          "route-map MAP-1 permit 20",
+          "match as-path 20",
+          "match as-path 30",
+          "set local-preference 300",
+          "route-map MAP-1 permit 30"]
 output=net_connect.send_config_set(bgp_comms)
+print(output)
+print('\n')
 output=net_connect.send_config_set(commands)
+print(output)
 net_connect.save_config()
 net_connect.disconnect()
