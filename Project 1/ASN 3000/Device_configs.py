@@ -70,6 +70,8 @@ net_connect.disconnect()
 print(ouput)
 print("\n")
 
+
+
 #E3000
 from Device_list import E3000
 net_connect=ConnectHandler(**E3000)
