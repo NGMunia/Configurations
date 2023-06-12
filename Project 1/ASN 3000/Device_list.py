@@ -6,6 +6,12 @@ A3000={"device_type": "cisco_ios",
        "password": "cisco123",
        "secret": "cisco123"}
 
+B3000={"device_type": "cisco_ios",
+       "host": "2.2.2.2",
+       "username": "Automation",
+       "password": "cisco123",
+       "secret": "cisco123"}
+
 C3000={"device_type": "cisco_ios",
        "host": "3.3.3.3",
        "username": "Automation",

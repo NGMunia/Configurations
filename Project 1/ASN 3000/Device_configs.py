@@ -9,7 +9,10 @@ bgp_comms=["router bgp 3000",
            "neighbor 1.1.1.1 remote-as 3000",
            "neighbor 1.1.1.1 update-source lo0",
            "neighbor 1.1.1.1 route-reflector-client",
-           "neighbor 4.4.4.4 remote-as 3000",
+           "neighbor 2.2.2.2 remote-as 3000",
+           "neighbor 2.2.2.2 update-source lo0",
+           "neighbor 2.2.2.2 route-reflector-client",
+           "neighbor 4.4.4.4 remote-as 3000",     
            "neighbor 4.4.4.4 update-source lo0",
            "neighbor 4.4.4.4 route-reflector-client",
            "neighbor 5.5.5.5 remote-as 3000",
@@ -35,6 +38,20 @@ net_connect.disconnect()
 print(ouput)
 print("\n")
 
+
+
+#B3000
+from Device_list import B3000
+net_connect=ConnectHandler(**B3000)
+net_connect.enable()
+bgp_comms=["router bgp 3000",
+           "neighbor 3.3.3.3 remote-as 3000",
+           "neighbor 3.3.3.3 update-source lo0",]
+ouput=net_connect.send_config_set(bgp_comms)
+net_connect.save_config()
+net_connect.disconnect()
+print(ouput)
+print("\n")
 
 
 #D3000
