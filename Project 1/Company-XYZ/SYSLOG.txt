@@ -1,0 +1,3 @@
+logging monitor informational
+logging host 192.168.255.254
+logging trap
