@@ -5,6 +5,7 @@ from netmiko import ConnectHandler
 from Device_list import C2000 #Route reflector 
 net_connect=ConnectHandler(**C2000)
 net_connect.enable()
+int_comms=["int e1/0","ip address 173.128.4.1 255.255.255.252","no shut"]
 bgp_comms=["router bgp 2000",
            "neighbor 1.1.1.1 remote-as 2000",
            "neighbor 1.1.1.1 update-source lo0",
@@ -24,6 +25,10 @@ bgp_comms=["router bgp 2000",
            "network 173.128.4.0 mask 255.255.255.252",
            "aggregate-address 173.128.4.0 255.255.255.0 summary-only"]
 ouput=net_connect.send_config_set(bgp_comms)
+print(ouput)
+print("\n")
+ouput=net_connect.send_config_set(int_comms)
+print(ouput)
 net_connect.save_config()
 net_connect.disconnect()
 
@@ -36,9 +41,11 @@ bgp_comms=["router bgp 2000",
            "neighbor 3.3.3.3 remote-as 2000",
            "neighbor 3.3.3.3 update-source lo0",
            "neighbor 3.3.3.3 next-hop-self",
-           "neighbor 172.128.1.2 remote-as 1000",
-           "network 172.128.1.0 mask 255.255.255.252",
-           "aggregate-address 172.128.1.0 255.255.255.0 summary-only"]
+           "neighbor 173.128.1.2 remote-as 1000",
+           "network 173.128.1.0 mask 255.255.255.252",
+           "aggregate-address 173.128.1.0 255.255.255.0 summary-only"]
+int_comms=["int e1/0","ip address 173.128.1.1 255.255.255.252","no shut"]
+ouput=net_connect.send_config_set(int_comms)
 ouput=net_connect.send_config_set(bgp_comms)
 net_connect.save_config()
 net_connect.disconnect()
@@ -53,6 +60,8 @@ bgp_comms=["router bgp 2000",
            "neighbor 3.3.3.3 update-source lo0",
            "neighbor 3.3.3.3 next-hop-self",
            "neighbor 72.73.74.1 remote-as 5000"]
+int_comms=["int e1/0","ip address 72.73.74.2 255.255.255.252","no shut"]
+ouput=net_connect.send_config_set(int_comms)
 ouput=net_connect.send_config_set(bgp_comms)
 net_connect.save_config()
 net_connect.disconnect()
@@ -65,8 +74,10 @@ net_connect.enable()
 bgp_comms=["router bgp 2000",
            "neighbor 3.3.3.3 remote-as 2000",
            "neighbor 3.3.3.3 update-source lo0",
-           "network 172.128.3.0 mask 255.255.255.252",
-           "aggregate-address 172.128.3.0 255.255.255.0 summary-only"]
+           "network 173.128.3.0 mask 255.255.255.252",
+           "aggregate-address 173.128.3.0 255.255.255.0 summary-only"]
+int_comms=["int e1/0","ip address 173.128.3.1 255.255.255.252","no shut"]
+ouput=net_connect.send_config_set(int_comms)
 ouput=net_connect.send_config_set(bgp_comms)
 net_connect.save_config()
 net_connect.disconnect()
@@ -80,9 +91,11 @@ bgp_comms=["router bgp 2000",
            "neighbor 3.3.3.3 remote-as 2000",
            "neighbor 3.3.3.3 update-source lo0",
            "neighbor 3.3.3.3 next-hop-self",
-           "neighbor 172.128.2.2 remote-as 1000",
-           "network 172.128.2.0 mask 255.255.255.252",
-           "aggregate-address 172.128.2.0 255.255.255.0 summary-only"]
+           "neighbor 173.128.2.2 remote-as 1000",
+           "network 173.128.2.0 mask 255.255.255.252",
+           "aggregate-address 173.128.2.0 255.255.255.0 summary-only"]
+int_comms=["int e1/0","ip address 172.128.2.1 255.255.255.252","no shut",
+           "int e1/1","ip address 173.128.2.5 255.255.255.252","no shut"]
 ouput=net_connect.send_config_set(bgp_comms)
 net_connect.save_config()
 net_connect.disconnect()
