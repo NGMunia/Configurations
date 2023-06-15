@@ -17,7 +17,7 @@ output=(response["Token"])                                                      
 headers.update({"X-Auth-Token": output})                                                    #Updating the headers dictionary with the Token value with the key as "X-Auth-Token".
 
 
-url_2="https://sandboxdnac.cisco.com/dna/intent/api/v1/network-device"
+url_2="https://sandboxdnac.cisco.com/dna/intent/api/v1/device-health"
 response=requests.get(url_2,auth=(USER,PASS),headers=headers, verify=False)                              
 response=response.json()                                                                    #Coverting the response from a string to a JSON object (Python dictionary)
 rprint(response)
