@@ -28,7 +28,6 @@ with open("C:\\Users\\Munia-Virtual\\Desktop\\Scripts\\Configurations\\Project 1
     f.write("ip access-list extended Copp_routing_acl\n")
     f.write("permit ospf any host 224.0.0.6\n")
     f.write("permit ospf any host 224.0.0.5\n")
-
     f.write("ip access-list extended Copp_icmp_acl\n")
     f.write("permit icmp any any\n")
     f.write("ip access-list extended Copp_management_acl\n")
@@ -39,16 +38,14 @@ with open("C:\\Users\\Munia-Virtual\\Desktop\\Scripts\\Configurations\\Project 1
     f.write("class-map match-any Copp_icmp_class\n")
     f.write("match access-group name Copp_icmp_acl\n")
     f.write("class-map match-any Copp_management_class\n")
-    f.write("match access-group name Copp_management_acl\n")
-  
+    f.write("match access-group name Copp_management_acl\n") 
     f.write("policy-map Copp_policy\n")
     f.write("class Copp_routing_class\n")
     f.write("police 64k conform-action transmit exceed-action transmit\n")
     f.write("class Copp_icmp_class\n")
     f.write("police 8k conform-action transmit exceed-action drop\n")
     f.write("class Copp_management_class\n")
-    f.write("police 128k conform-action transmit exceed-action transmit\n")
-    
+    f.write("police 128k conform-action transmit exceed-action transmit\n")   
     f.write("control-plane\n")
     f.write("service-policy input Copp_policy\n")
 with open("C:\\Users\\Munia-Virtual\\Desktop\\Scripts\\Configurations\\Project 1\\Company-XYZ\\CoPP.txt","r") as f:
@@ -64,7 +61,6 @@ with open("C:\\Users\\Munia-Virtual\\Desktop\\Scripts\\Configurations\\Project 1
     f.write("class-map match-any Scavenger-class\n")
     f.write("match protocol netflix\n")
     f.write("match protocol bittorrent\n")
-
     f.write("class-map match-any social-media-class\n")
     f.write("match protocol facebook\n")
     f.write("match protocol twitter\n")
@@ -72,7 +68,6 @@ with open("C:\\Users\\Munia-Virtual\\Desktop\\Scripts\\Configurations\\Project 1
     f.write("class-map match-any mission-critical-class\n")
     f.write("match protocol dns\n")
     f.write("match access-group name Server-access-acl\n")
-
     f.write("policy-map Internet_policy\n")
     f.write("class Scavenger-class\n")
     f.write("drop\n")
