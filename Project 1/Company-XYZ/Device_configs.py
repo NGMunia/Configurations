@@ -16,7 +16,6 @@ for devices in R1_Edge,R1_HUB,R1_LAN,firewall:
    
     
 
-
 #Common NTP configuration for HQ routers:
 #    - R1_LAN, R2_Edge, Firewall, R1_HUB
 for devices in firewall, R1_HUB, R1_LAN:
