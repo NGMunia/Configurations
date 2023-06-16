@@ -124,28 +124,4 @@ print(net_connect.send_config_from_file("C:\\Users\\Munia-Virtual\\Desktop\\Scri
 net_connect.save_config()
 net_connect.disconnect()
 
-
-#Configuring Spoke routers:
-#    - NTP
-#    - NetFlow
-print("======Configuring Spoke routers======\n")
-for routers in spokes:
-    net_connect=ConnectHandler(**routers)
-    net_connect.enable()
-    udp_port=int(input(f'{routers.get("host")} udp port: '))
-    netflow=["ip flow-export version 9",
-             "ip flow-export destination 192.168.255.254 "+str(udp_port),
-             "ip flow-top-talkers",
-             "top 5",
-             "sort-by bytes"]
-    print(net_connect.send_config_set(netflow)+"\n")
-    ntp_commands=["ntp server 172.31.1.1",
-              "ntp update-calendar",
-              "clock timezone GMT +3",
-              "service timestamps log datetime localtime year",
-              "service timestamps debug datetime year"]
-    print(net_connect.send_config_set(ntp_commands))
-    net_connect.save_config()
-    net_connect.disconnect()
-
     
