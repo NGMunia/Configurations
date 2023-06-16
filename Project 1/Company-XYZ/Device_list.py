@@ -29,7 +29,7 @@ R1_Edge={
             "host": "10.1.1.10",
             "username": "Automation",
             "password": "cisco123",
-            "secret": "cisco123"
+            "secret": "cisco123",
         }
             
 
