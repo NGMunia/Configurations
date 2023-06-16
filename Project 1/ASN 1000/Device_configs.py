@@ -15,11 +15,10 @@ bgp_comms=["router bgp 1000",
            "neighbor 3.3.3.3 route-reflector-client",
            "network 200.165.201.0 mask 255.255.255.252",
            "aggregate-address 200.165.201.0 255.255.255.0 summary-only"]
-output=net_connect.send_config_set(bgp_comms)
-print(output)
+print(output=net_connect.send_config_set(bgp_comms)+"\n")
 net_connect.save_config()
 net_connect.disconnect()
-print("\n")
+
 
 
 #B1000    
@@ -41,14 +40,10 @@ commands=["ip as-path access-list 10 permit ^$",
           "match as-path 30",
           "set local-preference 300",
           "route-map MAP-1 permit 30"]
-output=net_connect.send_config_set(bgp_comms)
-print(output)
-print('\n')
-output=net_connect.send_config_set(commands)
-print(output)
+print(output=net_connect.send_config_set(bgp_comms)+"\n")
+print(output=net_connect.send_config_set(commands)+"\n")
 net_connect.save_config()
 net_connect.disconnect()
-print("\n")
 
 
 #C1000
@@ -70,10 +65,7 @@ commands=["ip as-path access-list 10 permit ^$",
           "match as-path 30",
           "set local-preference 300",
           "route-map MAP-1 permit 30"]
-output=net_connect.send_config_set(bgp_comms)
-print(output)
-print('\n')
-output=net_connect.send_config_set(commands)
-print(output)
+print(output=net_connect.send_config_set(bgp_comms)+"\n")
+print(output=net_connect.send_config_set(commands)+"\n")
 net_connect.save_config()
 net_connect.disconnect()

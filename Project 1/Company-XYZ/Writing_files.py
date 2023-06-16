@@ -53,11 +53,11 @@ with open("C:\\Users\\Munia-Virtual\\Desktop\\Scripts\\Configurations\\Project 1
     print(read_data)
 
 
-
 #QoS:
 with open("C:\\Users\\Munia-Virtual\\Desktop\\Scripts\\Configurations\\Project 1\\Company-XYZ\\QoS.txt","w") as f:
     f.write("ip access-list extended Server-access-acl\n")
     f.write("permit ip any host 192.168.255.254\n")
+
     f.write("class-map match-any Scavenger-class\n")
     f.write("match protocol netflix\n")
     f.write("match protocol bittorrent\n")
@@ -68,6 +68,7 @@ with open("C:\\Users\\Munia-Virtual\\Desktop\\Scripts\\Configurations\\Project 1
     f.write("class-map match-any mission-critical-class\n")
     f.write("match protocol dns\n")
     f.write("match access-group name Server-access-acl\n")
+
     f.write("policy-map Internet_policy\n")
     f.write("class Scavenger-class\n")
     f.write("drop\n")
@@ -80,7 +81,50 @@ with open("C:\\Users\\Munia-Virtual\\Desktop\\Scripts\\Configurations\\Project 1
     f.write("class class-default\n")
     f.write("set dscp default\n")
     f.write("fair-queue\n") 
-with open("C:\\Users\\Munia-Virtual\\Desktop\\Scripts\\Configurations\\QoS.txt","r") as f:
+with open("C:\\Users\\Munia-Virtual\\Desktop\\Scripts\\Configurations\\Project 1\\Company-XYZ\\QoS.txt","r") as f:
     read_data=f.read()
     print(read_data)
 
+
+#Cryptography
+with open("C:\\Users\\Munia-Virtual\\Desktop\\Scripts\\Configurations\\Project 1\\Company-XYZ\\ISAKMP.txt","w") as f:
+    f.write("crypto isakmp policy 100\n")
+    f.write("hash sha\n")
+    f.write("authentication pre-share\n")
+    f.write("group 14\n")
+    f.write("lifetime 7200\n")
+    f.write("encryption aes\n")
+    f.write("crypto isakmp key xyzvpn address 0.0.0.0 0.0.0.0\n")
+    f.write("crypto ipsec transform-set crypt_ts esp-sha-hmac esp-aes 192\n")
+    f.write("mode transport\n")
+    f.write("crypto ipsec profile crypt_profile\n")
+    f.write("set transform-set crypt_ts\n")
+with open("C:\\Users\\Munia-Virtual\\Desktop\\Scripts\\Configurations\\Project 1\\Company-XYZ\\ISAKMP.txt","r") as f:
+    read_data=f.read()
+    print(read_data)
+
+#Zone-based firewall
+with open("C:\\Users\\Munia-Virtual\\Desktop\\Scripts\\Configurations\\Project 1\\Company-XYZ\\ZBF.txt","w") as f:
+    f.write("ip access-list extended Inside_Outside_acl\n")
+    f.write("permit tcp any any eq 443\n")
+    f.write("permit tcp any any eq 80\n")
+    f.write("permit udp any any\n")
+    f.write("permit icmp any any echo-reply\n")
+
+    f.write("class-map type inspect Inside_Outside_Class\n")
+    f.write("match access-group name Inside_Outside_acl\n")
+    f.write("policy-map type inspect Inside_Outside_Policy\n")
+    f.write("class Inside_Outside_Class\n")
+    f.write("inspect\n")
+
+    f.write("zone security Inside\n")
+    f.write("zone security Outside\n")
+    f.write("zone-pair security Inside_Outside_Zone source Inside destination Outside\n")
+    f.write("service-policy type inspect Inside_Outside_Policy\n")
+    f.write("int e0/2\n")
+    f.write("zone-member security Outside\n")
+    f.write("int range e0/0-1\n")
+    f.write("zone-member security Inside\n")
+with open("C:\\Users\\Munia-Virtual\\Desktop\\Scripts\\Configurations\\Project 1\\Company-XYZ\\ZBF.txt","r") as f:
+    read_data=f.read()
+    print(read_data)
