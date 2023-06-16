@@ -7,19 +7,21 @@ from Device_list import R1_Edge, firewall, R1_HUB, R1_LAN
 #    - SNMP configuration
 #    - Control-plane policing
 #    - Syslog
-print("======Common configuration for all routers=====")
+print("======Common configuration for all routers======\n")
 for devices in R1_Edge,R1_HUB,R1_LAN,firewall:
     net_connect=ConnectHandler(**devices)
     net_connect.enable()
     print(net_connect.send_config_from_file("C:\\Users\\Munia-Virtual\\Desktop\\Scripts\\Configurations\\Project 1\\Company-XYZ\\SNMP.txt")+"\n")
     print(net_connect.send_config_from_file("C:\\Users\\Munia-Virtual\\Desktop\\Scripts\\Configurations\\Project 1\\Company-XYZ\\CoPP.txt")+"\n")
     print(net_connect.send_config_from_file("C:\\Users\\Munia-Virtual\\Desktop\\Scripts\\Configurations\\Project 1\\Company-XYZ\\SYSLOG.txt")+"\n")
+    net_connect.save_config()
+    net_connect.disconnect()
    
     
 
 #Common NTP configuration for HQ routers:
 #    - R1_LAN, R2_Edge, Firewall, R1_HUB
-print("======Configuring NTP on HQ routers=====")
+print("======Configuring NTP on HQ routers======\n")
 for devices in firewall, R1_HUB, R1_LAN:
     net_connect=ConnectHandler(**devices)
     net_connect.enable()
@@ -29,13 +31,15 @@ for devices in firewall, R1_HUB, R1_LAN:
               "service timestamps log datetime localtime year",
               "service timestamps debug datetime year"]
     print(net_connect.send_config_set(ntp_commands)+"\n")
+    net_connect.save_config()
+    net_connect.disconnect()
 
 
 
 #Configuring Edge router:
 #    - NAT/PAT
 #    - NTP (server IP: 160.119.216.197)
-print("======configuring Edge router=====")
+print("======configuring Edge router======\n")
 net_connect=ConnectHandler(**R1_Edge)
 net_connect.enable()
 nat_conf=["ip access-list standard nat_acl",
@@ -54,6 +58,8 @@ ntp_comm=["ip domain lookup",
           "service timestamps debug datetime year"]
 print(net_connect.send_config_set(ntp_comm)+"\n")
 print(net_connect.send_config_set(nat_conf)+"\n")
+net_connect.save_config()
+net_connect.disconnect()
 
 
 
@@ -61,13 +67,13 @@ print(net_connect.send_config_set(nat_conf)+"\n")
 #    - QoS
 #    - NetFlow
 #    - DHCP
-print("======Configuring LAN router=====")
+print("======Configuring LAN router======\n")
 net_connect=ConnectHandler(**R1_LAN)
 net_connect.enable()
 print(net_connect.send_config_from_file("C:\\Users\\Munia-Virtual\\Desktop\\Scripts\\Configurations\\Project 1\\Company-XYZ\\QoS.txt")+"\n")
 netflow_udp_port=input("netflow UDP port: ")
 netflow=["ip flow-export version 9",
-         "ip flow-export destination 192.168.255.254 "+netflow_udp_port,
+         "ip flow-export destination 192.168.255.254 "+ netflow_udp_port,
          "ip flow-top-talkers",
          "top 10",
          "sort-by bytes",
@@ -78,13 +84,15 @@ netflow=["ip flow-export version 9",
          "int e0/0",
          "ip helper-address 192.168.255.254"]
 print(net_connect.send_config_set(netflow)+"\n")
+net_connect.save_config()
+net_connect.disconnect()
 
 
 
 #Configuring HUB router:
 #    - Cryptography
 #    - MGRE tunnel
-print("======Configuring HUB router=====")
+print("======Configuring HUB router======\n")
 net_connect=ConnectHandler(**R1_HUB)
 net_connect.enable()
 print(net_connect.send_config_from_file("C:\\Users\\Munia-Virtual\\Desktop\\Scripts\\Configurations\\Project 1\\Company-XYZ\\ISAKMP.txt")+"\n")
@@ -101,15 +109,16 @@ tunnel=["int tunnel 0",
         "ip ospf 1 area 0",
         "tunnel protection ipsec profile crypt_profile"]
 print(net_connect.send_config_set(tunnel)+"\n")
+net_connect.save_config()
+net_connect.disconnect()
 
 
 
 #Configuring Firewalls:
 #    - Zone based firewall
-print("======Configuring Firewall router=====")
+print("======Configuring Firewall router======\n")
 net_connect=ConnectHandler(**firewall)
 net_connect.enable()
 print(net_connect.send_config_from_file("C:\\Users\\Munia-Virtual\\Desktop\\Scripts\\Configurations\\Project 1\\Company-XYZ\\ZBF.txt"))
-
 net_connect.save_config()
 net_connect.disconnect()

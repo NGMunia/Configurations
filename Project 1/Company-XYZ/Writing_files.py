@@ -108,6 +108,7 @@ with open("C:\\Users\\Munia-Virtual\\Desktop\\Scripts\\Configurations\\Project 1
     f.write("ip access-list extended Inside_Outside_acl\n")
     f.write("permit tcp any any eq 443\n")
     f.write("permit tcp any any eq 80\n")
+    f.write("permit tcp 192.168.99.0 0.0.0.255 host 10.1.1.10 eq 22\n")
     f.write("permit udp any any\n")
     f.write("permit icmp any any\n")
 

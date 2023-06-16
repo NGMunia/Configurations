@@ -1,6 +1,7 @@
 ip access-list extended Inside_Outside_acl
 permit tcp any any eq 443
 permit tcp any any eq 80
+permit tcp 192.168.99.0 0.0.0.255 host 10.1.1.10 eq 22
 permit udp any any
 permit icmp any any
 class-map type inspect Inside_Outside_Class
