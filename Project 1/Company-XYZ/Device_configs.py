@@ -7,6 +7,7 @@ from Device_list import R1_Edge, firewall, R1_HUB, R1_LAN
 #    - SNMP configuration
 #    - Control-plane policing
 #    - Syslog
+print("======Common configuration for all routers=====")
 for devices in R1_Edge,R1_HUB,R1_LAN,firewall:
     net_connect=ConnectHandler(**devices)
     net_connect.enable()
@@ -18,6 +19,7 @@ for devices in R1_Edge,R1_HUB,R1_LAN,firewall:
 
 #Common NTP configuration for HQ routers:
 #    - R1_LAN, R2_Edge, Firewall, R1_HUB
+print("======Configuring NTP on HQ routers=====")
 for devices in firewall, R1_HUB, R1_LAN:
     net_connect=ConnectHandler(**devices)
     net_connect.enable()
@@ -26,13 +28,14 @@ for devices in firewall, R1_HUB, R1_LAN:
               "clock timezone GMT +3",
               "service timestamps log datetime localtime year",
               "service timestamps debug datetime year"]
-    print(net_connect.send_config_set(ntp_commands))
+    print(net_connect.send_config_set(ntp_commands)+"\n")
 
 
 
 #Configuring Edge router:
 #    - NAT/PAT
 #    - NTP (server IP: 160.119.216.197)
+print("======configuring Edge router=====")
 net_connect=ConnectHandler(**R1_Edge)
 net_connect.enable()
 nat_conf=["ip access-list standard nat_acl",
@@ -58,6 +61,7 @@ print(net_connect.send_config_set(nat_conf)+"\n")
 #    - QoS
 #    - NetFlow
 #    - DHCP
+print("======Configuring LAN router=====")
 net_connect=ConnectHandler(**R1_LAN)
 net_connect.enable()
 print(net_connect.send_config_from_file("C:\\Users\\Munia-Virtual\\Desktop\\Scripts\\Configurations\\Project 1\\Company-XYZ\\QoS.txt")+"\n")
@@ -73,13 +77,14 @@ netflow=["ip flow-export version 9",
          "service-policy output Internet_policy",
          "int e0/0",
          "ip helper-address 192.168.255.254"]
-print(net_connect.send_config_set(netflow))
+print(net_connect.send_config_set(netflow)+"\n")
 
 
 
 #Configuring HUB router:
 #    - Cryptography
 #    - MGRE tunnel
+print("======Configuring HUB router=====")
 net_connect=ConnectHandler(**R1_HUB)
 net_connect.enable()
 print(net_connect.send_config_from_file("C:\\Users\\Munia-Virtual\\Desktop\\Scripts\\Configurations\\Project 1\\Company-XYZ\\ISAKMP.txt")+"\n")
@@ -101,6 +106,7 @@ print(net_connect.send_config_set(tunnel)+"\n")
 
 #Configuring Firewalls:
 #    - Zone based firewall
+print("======Configuring Firewall router=====")
 net_connect=ConnectHandler(**firewall)
 net_connect.enable()
 print(net_connect.send_config_from_file("C:\\Users\\Munia-Virtual\\Desktop\\Scripts\\Configurations\\Project 1\\Company-XYZ\\ZBF.txt"))
