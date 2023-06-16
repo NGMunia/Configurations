@@ -1,0 +1,60 @@
+
+XYZ-BR-1#sh running-config int tunnel
+
+interface Tunnel0
+ bandwidth 1000
+ ip address 172.31.1.10 255.255.255.0
+ no ip redirects
+ ip mtu 1400
+ ip nhrp authentication xyzdmvpn
+ ip nhrp network-id 10
+ ip nhrp nhs 172.31.1.1 nbma 173.128.2.6 multicast
+ ip nhrp registration no-unique
+ ip ospf network broadcast
+ ip ospf priority 0
+ ip ospf 1 area 0
+ tunnel source Ethernet0/1
+ tunnel mode gre multipoint
+ tunnel protection ipsec profile crypt_profile
+
+
+XYZ-BR-2#sh running-config int tunnel 0
+interface Tunnel0
+ bandwidth 1000
+ ip address 172.31.1.20 255.255.255.0
+ no ip redirects
+ ip mtu 1400
+ ip nhrp authentication xyzdmvpn
+ ip nhrp network-id 10
+ ip nhrp nhs 172.31.1.1 nbma 173.128.2.6 multicast
+ ip nhrp registration no-unique
+ ip ospf network broadcast
+ ip ospf priority 0
+ ip ospf 1 area 0
+ tunnel source Ethernet0/1
+ tunnel mode gre multipoint
+ tunnel protection ipsec profile crypt_profile
+
+
+XYZ-BR-3#sh running-config int tunnel 0
+interface Tunnel0
+ bandwidth 1000
+ ip address 172.31.1.30 255.255.255.0
+ no ip redirects
+ ip mtu 1400
+ ip nhrp authentication xyzdmvpn
+ ip nhrp network-id 10
+ ip nhrp nhs 172.31.1.1 nbma 173.128.2.6 multicast
+ ip nhrp registration no-unique
+ ip ospf network broadcast
+ ip ospf priority 0
+ ip ospf 1 area 0
+ tunnel source Ethernet0/1
+ tunnel mode gre multipoint
+ tunnel protection ipsec profile crypt_profile
+
+
+
+
+
+
