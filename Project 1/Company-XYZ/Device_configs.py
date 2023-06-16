@@ -42,6 +42,14 @@ nat_conf=["ip access-list standard nat_acl",
           "int e0/1",
           "ip nat outside",
           "ip nat inside source list nat_acl interface e0/1 overload"]
+ntp_comm=["ip domain lookup",
+          "ip name-server 8.8.8.8",
+          "ntp server ke.pool.ntp.org",
+          "ntp update-calendar",
+          "clock timezone GMT +3",
+          "service timestamps log datetime localtime year",
+          "service timestamps debug datetime year"]
+print(net_connect.send_config_set(ntp_commands))
 print(net_connect.send_config_set(nat_conf)+"\n")
 
 
