@@ -2,7 +2,7 @@ ip access-list extended Inside_Outside_acl
 permit tcp any any eq 443
 permit tcp any any eq 80
 permit udp any any
-permit icmp any any echo-reply
+permit icmp any any
 class-map type inspect Inside_Outside_Class
 match access-group name Inside_Outside_acl
 policy-map type inspect Inside_Outside_Policy
@@ -11,8 +11,8 @@ inspect
 zone security Inside
 zone security Outside
 zone-pair security Inside_Outside_Zone source Inside destination Outside
-service policy type inspect Inside_Outside_Policy
+service-policy type inspect Inside_Outside_Policy
 int e0/2
-zone-member security Inside
-int range e0/0-1
 zone-member security Outside
+int range e0/0-1
+zone-member security Inside

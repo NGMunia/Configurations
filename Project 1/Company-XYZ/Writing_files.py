@@ -109,7 +109,7 @@ with open("C:\\Users\\Munia-Virtual\\Desktop\\Scripts\\Configurations\\Project 1
     f.write("permit tcp any any eq 443\n")
     f.write("permit tcp any any eq 80\n")
     f.write("permit udp any any\n")
-    f.write("permit icmp any any echo-reply\n")
+    f.write("permit icmp any any\n")
 
     f.write("class-map type inspect Inside_Outside_Class\n")
     f.write("match access-group name Inside_Outside_acl\n")
