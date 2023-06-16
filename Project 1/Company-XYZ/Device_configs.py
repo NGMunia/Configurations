@@ -1,6 +1,6 @@
 
 from netmiko import ConnectHandler
-from Device_list import R1_Edge, firewall, R1_HUB, R1_LAN,spokes
+from Device_list import R1_Edge, firewall, R1_HUB, R1_LAN
 
 
 #Common configuration for all routers:
@@ -8,7 +8,7 @@ from Device_list import R1_Edge, firewall, R1_HUB, R1_LAN,spokes
 #    - Control-plane policing
 #    - Syslog
 print("======Common configuration for all routers======\n")
-for devices in R1_Edge,R1_HUB,R1_LAN,firewall,spokes:
+for devices in R1_Edge,R1_HUB,R1_LAN,firewall:
     net_connect=ConnectHandler(**devices)
     net_connect.enable()
     print(net_connect.send_config_from_file("C:\\Users\\Munia-Virtual\\Desktop\\Scripts\\Configurations\\Project 1\\Company-XYZ\\SNMP.txt")+"\n")
