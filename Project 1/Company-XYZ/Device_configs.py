@@ -49,7 +49,7 @@ ntp_comm=["ip domain lookup",
           "clock timezone GMT +3",
           "service timestamps log datetime localtime year",
           "service timestamps debug datetime year"]
-print(net_connect.send_config_set(ntp_commands))
+print(net_connect.send_config_set(ntp_comm)+"\n")
 print(net_connect.send_config_set(nat_conf)+"\n")
 
 
