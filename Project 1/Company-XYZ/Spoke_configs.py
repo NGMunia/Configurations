@@ -5,7 +5,6 @@ from Device_list import spokes
 #Spoke/Branch routers configuration:
 #    - SNMP 
 #    - CoPP
-#    - Control-plane policing
 #    - Syslog
 #    - NetFlow
 print("======Configuring Spoke routers======\n")
