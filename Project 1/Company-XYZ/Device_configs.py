@@ -96,3 +96,4 @@ print(net_connect.send_config_set(tunnel)+"\n")
 net_connect=ConnectHandler(**firewall)
 net_connect.enable()
 print(net_connect.send_config_from_file("C:\\Users\\Munia-Virtual\\Desktop\\Scripts\\Configurations\\Project 1\\Company-XYZ\\ZBF.txt"))
+
