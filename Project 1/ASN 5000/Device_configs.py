@@ -1,6 +1,7 @@
 from netmiko import ConnectHandler
 #Configuring BGP
 
+
 #A5000
 from  Device_list import A5000
 net_connect=ConnectHandler(**A5000)
@@ -10,11 +11,11 @@ bgp_comms=["router bgp 5000",
            "neighbor 2.2.2.2 remote-as 5000",
            "neighbor 2.2.2.2 update-source lo0",
            "network 72.73.74.8 mask 255.255.255.252"]
-output=net_connect.send_config_set(int_comms)
-print(output)
-output=net_connect.send_config_set(bgp_comms)
-print(output)
-print("\n")
+print(net_connect.send_config_set(bgp_comms)+"\n")
+print(net_connect.send_config_set(int_comms)+"\n")
+net_connect.save_config()
+net_connect.disconnect()
+
 
 
 #B5000
@@ -28,9 +29,9 @@ bgp_comms=["router bgp 5000",
            "neighbor 3.3.3.3 remote-as 5000",
            "neighbor 3.3.3.3 update-source lo0",
            "neighbor 3.3.3.3 route-reflector-client"]
-output=net_connect.send_config_set(bgp_comms)
-print(output)
-print("\n")
+print(net_connect.send_config_set(bgp_comms)+"\n")
+net_connect.save_config()
+net_connect.disconnect()
 
 
 #C5000
@@ -47,7 +48,7 @@ bgp_comms=["router bgp 5000",
            "neighbor 72.73.74.6 remote-as 2000",
            "network 72.73.74.0 mask 255.255.255.252",
            "aggregate-address 72.73.74.0 255.255.255.0 summary-only"]
-output=net_connect.send_config_set(int_comms)
-print(output)
-output=net_connect.send_config_set(bgp_comms)
-print(output)
+print(net_connect.send_config_set(bgp_comms)+"\n")
+print(net_connect.send_config_set(int_comms)+"\n")
+net_connect.save_config()
+net_connect.disconnect()

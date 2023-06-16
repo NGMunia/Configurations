@@ -3,9 +3,5 @@ from Device_list import C2000
 
 net_connect=ConnectHandler(**C2000)
 net_connect.enable()
-show_commands=[ "show ip bgp "]
-for i in show_commands:
-    output=net_connect.send_command(i)
-    print("\n")
-    print(output)
-   
+command=input("Input show command: ")
+print(net_connect._send_command_str(command))

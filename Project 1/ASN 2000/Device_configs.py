@@ -25,11 +25,8 @@ bgp_comms=["router bgp 2000",
            "neighbor 173.128.4.2 remote-as 3000",
            "network 173.128.4.0 mask 255.255.255.252",
            "aggregate-address 173.128.4.0 255.255.255.0 summary-only"]
-ouput=net_connect.send_config_set(bgp_comms)
-print(ouput)
-print("\n")
-ouput=net_connect.send_config_set(int_comms)
-print(ouput)
+print(net_connect.send_config_set(bgp_comms)+"\n")
+print(net_connect.send_config_set(int_comms)+"\n")
 net_connect.save_config()
 net_connect.disconnect()
 
@@ -46,14 +43,10 @@ bgp_comms=["router bgp 2000",
            "network 173.128.1.0 mask 255.255.255.252",
            "aggregate-address 173.128.1.0 255.255.255.0 summary-only"]
 int_comms=["int e1/0","ip address 173.128.1.1 255.255.255.252","no shut"]
-ouput=net_connect.send_config_set(int_comms)
-print(ouput)
-print("\n")
-ouput=net_connect.send_config_set(bgp_comms)
+print(net_connect.send_config_set(bgp_comms)+"\n")
+print(net_connect.send_config_set(int_comms)+"\n")
 net_connect.save_config()
 net_connect.disconnect()
-print(ouput)
-print("\n")
 
 
 #B2000
@@ -66,14 +59,11 @@ bgp_comms=["router bgp 2000",
            "neighbor 3.3.3.3 next-hop-self",
            "neighbor 72.73.74.5 remote-as 5000"]
 int_comms=["int e1/0","ip address 72.73.74.6 255.255.255.252","no shut"]
-ouput=net_connect.send_config_set(int_comms)
-print(ouput)
-print("\n")
-ouput=net_connect.send_config_set(bgp_comms)
+print(net_connect.send_config_set(bgp_comms)+"\n")
+print(net_connect.send_config_set(int_comms)+"\n")
 net_connect.save_config()
 net_connect.disconnect()
-print(ouput)
-print("\n")
+
 
 
 #D2000
@@ -86,14 +76,11 @@ bgp_comms=["router bgp 2000",
            "network 173.128.3.0 mask 255.255.255.252",
            "aggregate-address 173.128.3.0 255.255.255.0 summary-only"]
 int_comms=["int e1/0","ip address 173.128.3.1 255.255.255.252","no shut"]
-ouput=net_connect.send_config_set(int_comms)
-print(ouput)
-print("\n")
-ouput=net_connect.send_config_set(bgp_comms)
+print(net_connect.send_config_set(bgp_comms)+"\n")
+print(net_connect.send_config_set(int_comms)+"\n")
 net_connect.save_config()
 net_connect.disconnect()
-print(ouput)
-print("\n")
+
 
 
 #E2000
@@ -109,9 +96,8 @@ bgp_comms=["router bgp 2000",
            "aggregate-address 173.128.2.0 255.255.255.0 summary-only"]
 int_comms=["int e1/0","ip address 172.128.2.1 255.255.255.252","no shut",
            "int e1/1","ip address 173.128.2.5 255.255.255.252","no shut"]
-ouput=net_connect.send_config_set(bgp_comms)
-output=net_connect.send_config_set(int_comms)
+print(net_connect.send_config_set(bgp_comms)+"\n")
+print(net_connect.send_config_set(int_comms)+"\n")
 net_connect.save_config()
 net_connect.disconnect()
-print(ouput)
 

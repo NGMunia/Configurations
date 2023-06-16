@@ -1,5 +1,0 @@
-ntp server & C:/Users/Munia-Virtual/AppData/Local/Programs/Python/Python311/python.exe "c:/Users/Munia-Virtual/Desktop/Scripts/Configurations/Project 1/Company-XYZ/Device_config.py"
-ntp update-calendar
-clock timezone GMT +3
-service timestamps log datetime localtime year
-service timestams debug datetime localtime year
