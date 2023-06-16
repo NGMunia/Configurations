@@ -30,7 +30,12 @@ for routers in spokes:
              "ip flow-export destination 192.168.255.254 "+str(udp_port),
              "ip flow-top-talkers",
              "top 5",
-             "sort-by bytes"]
+             "sort-by bytes",
+             "ip flow-cache timeout active 1",
+             "int e0/0",
+             "ip nbar protocol-discovery",
+             "ip flow ingress",
+             "ip flow egress"]
     print(net_connect.send_config_set(netflow)+"\n")
     ntp_commands=["ntp server 172.31.1.1",
               "ntp update-calendar",
