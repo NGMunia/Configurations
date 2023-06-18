@@ -20,7 +20,7 @@ multicast= [
                 "int range e0/0, tunnel0",
                 "ip pim sparse-mode",
                 "ip pim rp-address 192.168.10.1" ]
-lan_intf = [" int e0/0", "ip ospf 1 area 10","router ospf 1", "router-id 172.31.1.1"]
+lan_intf = ["int e0/0", "ip ospf 1 area 10","router ospf 1", "router-id 172.31.1.1"]
 commands=[tunnel, multicast, lan_intf]
 for commands in commands:
     rprint(net_connect.send_config_set(commands)+"\n")
@@ -38,7 +38,7 @@ tunnel =   [
                 "tunnel destination 200.165.201.10",
                 "ip address 172.31.1.2 255.255.255.252",
                 "ip ospf 1 area 0"]
-lan_intf = [" int e0/0", "ip ospf 1 area 99"]
+lan_intf = ["int e0/0", "ip ospf 1 area 99"]
 multicast= [
                 "ip multicast-routing",
                 "int range e0/0, tunnel0",
