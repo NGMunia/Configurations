@@ -31,7 +31,8 @@ bgp_comms=["router bgp 3000",
            "neighbor 3.3.3.3 remote-as 3000",
            "neighbor 3.3.3.3 update-source lo0",
            "neighbor 3.3.3.3 next-hop-self",
-           "neighbor 173.128.4.1 remote-as 2000"]
+           "neighbor 173.128.4.1 remote-as 2000",
+           "neighbor 173.128.4.1 remove-private-as"]
 print(net_connect.send_config_set(bgp_comms)+"\n")
 net_connect.save_config()
 net_connect.disconnect()
@@ -59,6 +60,7 @@ bgp_comms=["router bgp 3000",
            "neighbor 3.3.3.3 update-source lo0",
            "network 44.67.28.0 mask 255.255.255.252",
            "neighbor 44.67.28.2 remote-as 4000",
+           "neighbor 44.67.28.2 remove-private-as",
            "aggregate-address 44.67.28.0 255.255.255.0 summary-only"]
 print(net_connect.send_config_set(bgp_comms)+"\n")
 net_connect.save_config()
@@ -76,7 +78,6 @@ bgp_comms=["router bgp 3000",
            "neighbor 3.3.3.3 update-source lo0",
            "neighbor 3.3.3.3 next-hop-self",
            "neighbor 32.19.86.6 remote-as 65000",
-           "neighbor 32.19.86.6 remove-private-as",
            "network 32.19.86.0 mask 255.255.255.252",
            "aggregate-address 32.19.86.0 255.255.255.0 summary-only" ]
 print(net_connect.send_config_set(bgp_comms)+"\n")

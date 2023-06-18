@@ -1,0 +1,6 @@
+crypto isakmp policy 10
+hash sha
+authentication pre-share
+group 14
+lifetime 7200
+encryption aes
