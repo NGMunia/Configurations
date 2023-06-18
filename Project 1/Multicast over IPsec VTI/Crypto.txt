@@ -4,3 +4,10 @@ authentication pre-share
 group 14
 lifetime 7200
 encryption aes
+crypto ipsec transform-set crypt_ts esp-sha-hmac esp-aes 192
+mode transport
+crypto ipsec profile crypt_profile
+set transform-set crypt_ts
+int tunnel 0
+tunnel mode ipsec ipv4
+tunnel protection ipsec profile crypt_profile
