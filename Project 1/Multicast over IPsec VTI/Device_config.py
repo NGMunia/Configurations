@@ -16,6 +16,7 @@ tunnel =   [
                 "ip address 172.31.1.1 255.255.255.252",
                 "ip ospf 1 area 0"    ]
 multicast= [
+                "ip multicast-routing",
                 "int range e0/0, tunnel0",
                 "ip pim sparse-mode",
                 "ip pim rp-address 192.168.10.1" ]
@@ -36,13 +37,14 @@ tunnel =   [
                 "tunnel source e0/1",
                 "tunnel destination 200.165.201.10",
                 "ip address 172.31.1.2 255.255.255.252",
-               "ip ospf 1 area 0"]
+                "ip ospf 1 area 0"]
 lan_intf = [" int e0/0", "ip ospf 1 area 99"]
 multicast= [
+                "ip multicast-routing",
                 "int range e0/0, tunnel0",
                 "ip pim sparse-mode",
-               "int e0/0",
-               "ip igmp join-group 239.1.10.100",
+                "int e0/0",
+                "ip igmp join-group 239.1.10.100",
                 "ip pim rp-address 192.168.10.1" ]
 commands=[tunnel, multicast, lan_intf]
 for commands in commands:
