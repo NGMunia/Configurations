@@ -29,7 +29,7 @@ for devices in firewall, R1_HUB, R1_LAN:
               "ntp update-calendar",
               "clock timezone GMT +3",
               "service timestamps log datetime localtime year",
-              "service timestamps debug datetime year"]
+              "service timestamps debug datetime localtime year"]
     print(net_connect.send_config_set(ntp_commands)+"\n")
     net_connect.save_config()
     net_connect.disconnect()
