@@ -6,8 +6,8 @@ import json
 #Disables SSL certificate warnings
 requests.packages.urllib3.disable_warnings()  
 
-USER = "developer"
-PASS = "lastorangerestoreball8876"
+USER    = "developer"
+PASS    = "lastorangerestoreball8876"
 
 url     =  "https://sandbox-iosxe-recomm-1.cisco.com:443/restconf/data/native/interface"
 
