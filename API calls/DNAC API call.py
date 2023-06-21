@@ -3,7 +3,8 @@
 
 import requests                                                                              #The requests module is used.
 from rich import print as rprint                                                             #The rich library module is used to structure the output into a more readable JSON format.
-#requests.packages.urllib3.disable_warnings()
+
+requests.packages.urllib3.disable_warnings()                                                 #disable warnings from SSL/TLS certificates
 
 url_1="https://sandboxdnac.cisco.com/dna/system/api/v1/auth/token"
 
@@ -19,4 +20,3 @@ headers.update({"X-Auth-Token": output})                                        
 
 url_2="https://sandboxdnac.cisco.com/dna/intent/api/v1/device-health"
 rprint(requests.get(url_2, auth=(USER, PASS), headers=headers, verify=False).json())
-
