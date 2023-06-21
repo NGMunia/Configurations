@@ -3,7 +3,8 @@ import requests
 from rich import print as rprint
 import json
 
-requests.packages.urllib3.disable_warnings()  # Disables SSL certificate warnings
+# Disables SSL certificate warnings
+requests.packages.urllib3.disable_warnings()  
 
 USER = "developer"
 PASS = "lastorangerestoreball8876"
