@@ -9,11 +9,11 @@ requests.packages.urllib3.disable_warnings()
 USER    = "developer"
 PASS    = "lastorangerestoreball8876"
 
-url     =  "https://sandbox-iosxe-recomm-1.cisco.com:443/restconf/data/native/interface"
+url     = "https://sandbox-iosxe-recomm-1.cisco.com:443/restconf/data/native/interface"
 
 headers =   {    
-                "accept": "application/yang-data+json",
-                "content-type":"application/yang-data+json"            
+              "accept": "application/yang-data+json",
+              "content-type":"application/yang-data+json"            
             } 
 data    =   { "Loopback":{
                             "name": 1986,
