@@ -4,7 +4,7 @@ This configuration seeks to achieve the following:
     - OSPF routing between devices R1 and R2
     - NAT on R2 to allow for internet access on:
          - user VLAN 100
-         - host 192.168.99.100
+         - user VLAN 99
     - Configure QoS to:
          - restrict bandwidth social media sites (CS1)
          - block torrent sites.
