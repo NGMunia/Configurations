@@ -1,0 +1,22 @@
+ip access-list extended routing_acl
+permit ospf any host 224.0.0.5
+ip access-list extended icmp_acl
+permit icmp any any
+ip access-list extended Management_acl
+permit tcp any any eq 22
+permit udp host 192.168.255.254 any eq 161
+class-map match-all routing_class
+match access-group name routing_acl
+class-map match-all ICMP_class
+match access-group name icmp_acl
+class-map match-all Management_class
+match access-group name Management_acl
+policy-map CoPP_policy
+class routing_class
+police 64k conform-action transmit exceed-action transmit violate-action transmit
+class Management_class
+police 128K conform-action transmit exceed-action transmit violate-action transmit
+class ICMP_class
+police 8k conform-action transmit exceed-action drop
+control-plane
+service-policy input CoPP_policy
