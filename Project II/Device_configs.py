@@ -111,7 +111,7 @@ for commands in commands:
 
 #Global configurations:
 netflow_config()
-snmp_config
+snmp_config()
 CoPP_config()
 EEM_config()
 ntp_config()
