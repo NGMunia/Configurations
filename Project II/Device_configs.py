@@ -25,7 +25,7 @@ ports   =    [
               "switchport port-security violation restrict"
              ] 
    
-spantree=    ["int range e0/0-3", "spanning-tree portfast", "spanning-tree bpduguard enable"]   
+spantree =   ["int range e0/0-3", "spanning-tree portfast", "spanning-tree bpduguard enable"]   
  
 commands=[vlans_conf,ports,spantree]
 for commands in commands:
