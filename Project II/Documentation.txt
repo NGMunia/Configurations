@@ -19,9 +19,7 @@ This configuration seeks to achieve the following:
          - RACL
          - Port-security
          - BPDU guard
-
-
-     - Images used:
+    - Images used:
          - Routers:  i86bi-linux-l3-adventerprisek9-ms.155-2.T.bin
          - Switch:   i86bi-linux-l2-adventerprisek9-15.1a.bin
          - Server:   Windows server 2012 VM
