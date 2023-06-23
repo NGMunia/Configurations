@@ -37,6 +37,7 @@ for commands in commands:
 #Configuring R1:
 #    - DHCP
 #    - QoS
+#    - ACLs
 net_connect=ConnectHandler(**R1)
 net_connect.enable()
 
@@ -80,7 +81,6 @@ for commands in commands:
 #Configuring R2:
 #    - NAT
 #    - QoS
-#    - Time-based ACL
 net_connect=ConnectHandler(**R2)
 net_connect.enable()
 QoS = [
