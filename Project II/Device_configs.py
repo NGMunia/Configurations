@@ -5,45 +5,36 @@ from Device_List import SW, R1, R2
 from global_Configurations import netflow_config, ntp_config, snmp_config, CoPP_config, EEM_config
 
 
-    
+
 #Configuring the Switch:
 rprint("[cyan]==========CONFIGURING THE SWITCH==========[/cyan]\n")
 net_connect=ConnectHandler(**SW)
 net_connect.enable()    
 vlans_conf = [
               "vlan 100","name Data_VLAN",
-              "int g0/0", "switchport access vlan 100",
-              "int g1/0", "switchport mode trunk","switchport trunk allowed vlan add 100"
+              "int e0/0","switchport mode access","switchport access vlan 100",
+              "int e1/0","switchport trunk allowed vlan add 100"
              ]    
 ports   =    [
-              "int range g0/2-3",
+              "int range e0/1",
+              "switchport mode access",
               "switchport access vlan 99",
               "switchport port-security",
               "switchport port-security mac-address sticky",
-              "switchport port-security maximum 2",
+              "switchport port-security maximum 1",
               "switchport port-security violation restrict"
              ] 
    
-spantree=    ["int range g0/0-3", "spanning-tree portfast", "spanning-tree bpduguard enable"]   
+spantree=    ["int range e0/0-3", "spanning-tree portfast", "spanning-tree bpduguard enable"]   
  
-vacl    =    [
-              "ip access-list extended VLAN_99_acl",
-              "permit ip any 192.168.99.0 0.0.0.255",
-              "vlan access-map VLAN_100_VACL 10",
-              "match ip address VLAN_99_acl",
-              "action drop log",
-              "vlan access-map VLAN_100_VACL 20",
-              "action forward",
-              "exit",
-              "vlan filter VLAN_100_VACL vlan-list 100"
-             ]
-commands=[vlans_conf,ports,spantree,vacl]
+commands=[vlans_conf,ports,spantree]
 for commands in commands:
     rprint(net_connect.send_config_set(commands)+"\n")
     net_connect.save_config()
-    
 
-#Configuring R1:
+
+
+ #Configuring R1:
 #    - DHCP
 #    - QoS
 net_connect=ConnectHandler(**R1)
@@ -55,28 +46,34 @@ dhcp= ["ip dhcp excluded-address 192.168.100.1 192.168.100.10",
        "default-router 192.168.100.1",
        "dns-server 208.67.222.123",
        "lease 0 2"]
-QoS = ["class-map match-any Scavenger_class",
-       "match protocol netflix",
-       "match protocol bittorrent",
-       "class-map match-any Social_media_class",
-       "match protocol facebook",
-       "match protocol twitter",
-       "match protocol instagram",
-       "policy-map Internet_policy",
-       "class Scavenger_class",
-       "drop",
-       "class Social_media_class",
-       "police 128K conform-action transmit exceed-action drop",
-       "set dscp cs1",
-       "class class-default",
-       "set dscp default",
-       "fair-queue",
-       "interface e0/1", "service-policy output Internet_policy"
+acls=  ["ip access-list extended VLAN_100_restriction_acl",
+        "deny ip 192.168.100.0 0.0.0.255 192.168.99.0 0.0.0.255 log",
+        "permit ip any any",
+        "int e0/0.100",
+        "ip access-group VLAN_100_restriction_acl in"]
+QoS =  ["class-map match-any Scavenger_class",
+        "match protocol netflix",
+        "match protocol bittorrent",
+        "class-map match-any Social_media_class",
+        "match protocol facebook",
+        "match protocol twitter",
+        "match protocol instagram",
+        "policy-map Internet_policy",
+        "class Scavenger_class",
+        "drop",
+        "class Social_media_class",
+        "police 128K conform-action transmit exceed-action drop",
+        "set dscp cs1",
+        "class class-default",
+        "set dscp default",
+        "fair-queue",
+        "interface e0/1", "service-policy output Internet_policy"
        ]
-commands=[dhcp,QoS]
+commands=[QoS,dhcp,acls]
 for commands in commands:
     rprint(net_connect.send_config_set(commands))
     net_connect.save_config()
+   
 
 
 #Configuring R2:
@@ -108,6 +105,7 @@ for commands in commands:
     rprint(net_connect.send_config_set(commands))
     net_connect.save_config()
    
+
 
 #Global configurations:
 netflow_config()
