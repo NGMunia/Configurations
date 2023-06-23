@@ -41,7 +41,7 @@ for commands in commands:
 net_connect=ConnectHandler(**R1)
 net_connect.enable()
 
-dhcp = [ "ip dhcp excluded-address 192.168.100.1 192.168.100.10",
+dhcp =  ["ip dhcp excluded-address 192.168.100.1 192.168.100.10",
          "ip dhcp pool VLAN_100",
          "network 192.168.100.0 255.255.255.0",
          "default-router 192.168.100.1",
