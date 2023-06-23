@@ -22,6 +22,3 @@ R2  =   {
             "password": "cisco123",
             "secret": "cisco123"
         }
-
-
-    
