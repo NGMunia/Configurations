@@ -12,7 +12,7 @@ def snmp_config():
     """This function will configure SNMP on the Network devices.
 This forms part of Data traffic collection and analysis"""
     rprint('\n'f'[cyan]{snmp_config.__doc__}[/cyan]'+'\n')
-    for routers in R1,R2:
+    for routers in R1,R2,SW:
         net_connect=ConnectHandler(**routers)
         net_connect.enable()
         commands=["ip access-list standard SNMP",
