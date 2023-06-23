@@ -2,7 +2,7 @@
 from netmiko import ConnectHandler
 from rich import print as rprint
 from Device_List import SW, R1, R2
-from global_Configurations import netflow_config, ntp_config, snmp_config, CoPP_config, EEM_config
+from global_Configurations import netflow_config, ntp_config, snmp_config, CoPP_config, EEM_config, syslog_conf
 
 
 
@@ -114,3 +114,4 @@ snmp_config()
 CoPP_config()
 EEM_config()
 ntp_config()
+syslog_conf()

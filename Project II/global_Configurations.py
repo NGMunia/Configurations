@@ -103,4 +103,19 @@ This aims to protect the RP from DOS attacks"""
 
 
 
+#Syslog
+def syslog_conf():
+    """This function will configure Syslog on the Network devices."""
+    rprint(f'[cyan]{syslog_conf.__doc__}[/cyan]'+'\n')
+    for devices in R1,R2,SW:
+        net_connect=ConnectHandler(**devices)
+        net_connect.enable()
+        syslog= ["logging monitor informational",
+                 "logging host 192.168.99.254",
+                 "logging trap",
+                 "service timestamps log datetime localtime year",
+                 "service timestamps debug datetime localtime year"]
+        rprint(net_connect.send_config_set(syslog)+'\n')
+    
+
 
