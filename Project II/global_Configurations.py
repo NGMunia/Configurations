@@ -46,8 +46,8 @@ def ntp_config():
 
 #EEM applets
 def EEM_config():
-    """THis funtion will configure EEM applet to the router.
-Automatic backup of  start-up config to TFTP server will occur every Monday to Friday at 12:30 PM"""
+    """This funtion will configure EEM applet to the router.
+Automatic backup of  start-up config to TFTP server will occur every Monday to Saturday at 12:30 PM"""
     rprint('\n'f'[cyan]{EEM_config.__doc__}[/cyan]'+'\n')
     for devices in R1,R2,SW:
         net_connect=ConnectHandler(**devices)
