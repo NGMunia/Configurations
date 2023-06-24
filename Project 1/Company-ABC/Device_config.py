@@ -6,7 +6,6 @@ from Device_list import R1, R2, R3, R4, R5
 
 #Configuring R4 router:
 #    - LISP xTR
-#    - MGRE tunnel (spoke)
 #    - cryptography
 
 rprint("======CONFIGURING R4 SPOKE ROUTER======\n")
@@ -40,7 +39,6 @@ net_connect.disconnect()
 
 #Configuring R5 router:
 #    - LISP xTR
-#    - MGRE tunnel (spoke)
 #    - cryptography
 
 rprint("======CONFIGURING R5 SPOKE ROUTER======\n")
@@ -73,21 +71,10 @@ net_connect.disconnect()
 
 
 #Configuring R2 router:
-#    - MGRE tunnel (hub)
 #    - cryptography
-
 rprint("======CONFIGURING R4 HUB ROUTER======\n")
 net_connect=ConnectHandler(**R2)
 net_connect.enable()
-tunnel= [
-            "int tunnel 0",
-            "tunnel source e1/0",
-            "tunnel mode gre multipoint",
-            "ip mtu 1400",
-            "ip nhrp map multicast dynamic",
-            "ip nhrp network-id 10",
-            "ip nhrp authentication abc123",
-            "ip address 172.31.1.1 255.255.255.0"  ]
 crypto= [
             "crypto isakmp policy 100",
             "hash sha",
@@ -100,7 +87,6 @@ crypto= [
             "mode transport",
             "crypto ipsec profile crypt_profile",
             "set transform-set crypt_ts", ] 
-rprint(net_connect.send_config_set(tunnel)+"\n")
 rprint(net_connect.send_config_set(crypto)+"\n")
 net_connect.save_config()
 net_connect.disconnect()
@@ -109,7 +95,6 @@ net_connect.disconnect()
 
 #Configuring R1 router:
 #    - LISP MS/MR
-
 rprint("======CONFIGURING R4 MAP SERVER/RESOLVER======\n")
 net_connect=ConnectHandler(**R1)
 net_connect.enable()

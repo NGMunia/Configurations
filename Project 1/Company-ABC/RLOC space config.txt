@@ -1,0 +1,72 @@
+
+#R2 HUB CONFIGURATION:
+==============================
+
+interface Tunnel0
+ ip address 172.31.1.1 255.255.255.0
+ no ip redirects
+ ip mtu 1400
+ ip nhrp authentication abc123
+ ip nhrp map multicast dynamic
+ ip nhrp network-id 10
+ tunnel source Ethernet1/0
+ tunnel mode gre multipoint
+ tunnel protection ipsec profile crypt_profile
+end
+
+router eigrp EIGRP
+ !
+ address-family ipv4 unicast autonomous-system 100
+  !
+  af-interface Tunnel0
+   no next-hop-self
+   no split-horizon
+  exit-af-interface
+  !
+  topology base
+  exit-af-topology
+  network 2.0.0.0
+  network 10.0.0.0
+  network 172.31.0.0
+ exit-address-family
+
+
+R4 SPOKE CONFIGURATION:
+======================================
+
+interface Tunnel0
+ ip address 172.31.1.10 255.255.255.0
+ no ip redirects
+ ip mtu 1400
+ ip nhrp authentication abc123
+ ip nhrp network-id 10
+ ip nhrp nhs 172.31.1.1 nbma 173.128.3.2 multicast
+ ip nhrp registration no-unique
+ tunnel source Ethernet0/1
+ tunnel mode gre multipoint
+ tunnel protection ipsec profile crypt_profile
+end
+
+router eigrp 100
+ network 172.31.0.0
+
+
+R5 CONFIGURATION
+========================================
+
+interface Tunnel0
+ ip address 172.31.1.20 255.255.255.0
+ no ip redirects
+ ip mtu 1400
+ ip nhrp authentication abc123
+ ip nhrp network-id 10
+ ip nhrp nhs 172.31.1.1 nbma 173.128.3.2 multicast
+ ip nhrp registration no-unique
+ tunnel source Ethernet0/1
+ tunnel mode gre multipoint
+ tunnel protection ipsec profile crypt_profile
+end
+
+router eigrp 100
+ network 172.31.0.0
+
