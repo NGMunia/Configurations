@@ -1,5 +1,7 @@
 
 
+from netmiko import ConnectHandler
+
 R1_HUB=  {
             "device_type": "cisco_ios",
             "host": "10.1.1.6",

@@ -1,6 +1,6 @@
 
 from netmiko import ConnectHandler
-from Device_list import R1_Edge, firewall, R1_HUB, R1_LAN
+from Device_list import R1_Edge, firewall, R1_HUB, R1_LAN, spokes
 
 
 #Common configuration for all routers:
@@ -126,4 +126,26 @@ print(net_connect.send_config_from_file("C:\\Users\\Munia-Virtual\\Desktop\\Scri
 net_connect.save_config()
 net_connect.disconnect()
 
+
+
+#EEM applet:
+for devices in R1_Edge, firewall, R1_HUB, R1_LAN:
+    net_connect=ConnectHandler(**devices)
+    net_connect.enable()
+    filename = input(f'Host {devices.get("host")} TFTP filename: ')
+    EEM      = ["event manager environment tftpserver tftp://192.168.255.254/",
+                "event manager environment filename "+filename,
+                "event manager applet AUTOMATIC_BACKUP_CONFIG",
+                "event timer cron cron-entry \"0 11 * * 1-6\"",
+                "action 1.0 cli command \"enable\"",
+                "action 1.1 cli command \"debug event manager action cli\"",
+                "action 1.2 cli command \"conf t\"",
+                "action 1.3 cli command \"file prompt quiet\"",
+                "action 1.4 cli command \"do copy start $tftpserver$filename\"",
+                "action 1.5 cli command \"no file prompt quiet\"",
+                "action 1.6 syslog priority informational msg \"TFTP backup successful!!\""]
+    print(net_connect.send_config_set(EEM)+"\n")
+    net_connect.save_config()
+    net_connect.disconnect()
+    
     
