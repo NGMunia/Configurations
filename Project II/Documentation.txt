@@ -3,13 +3,13 @@ This configuration seeks to achieve the following:
     - VLANs
     - OSPF routing between devices R1 and R2
     - NAT on R2 to allow for internet access on:
-         - user VLAN 100
-         - user VLAN 99
+         - VLAN 100
+         - VLAN 99
     - Configure QoS to:
          - restrict bandwidth social media sites (CS1)
          - block torrent sites.
          - Allow default traffic (CS0)
-    - Automate TFTP backup of all devices' configuration every weekday at 12:30 PM using EEM
+    - Automate TFTP backup of R1/R2/SW start-up config every Monday-Saturday at 12:30 PM using EEM
     - Collect/analyze data traffic using:
          - Syslog
          - SNMP
@@ -21,7 +21,8 @@ This configuration seeks to achieve the following:
          - Port-security
          - BPDU guard
     - Images used:
-         - Routers:  i86bi-linux-l3-adventerprisek9-ms.155-2.T.bin
-         - Switch:   i86bi-linux-l2-adventerprisek9-15.1a.bin
-         - Server:   Windows server 2012 VM
-         - User:     webterm docker
+         - Routers:    i86bi-linux-l3-adventerprisek9-ms.155-2.T.bin
+         - Switch:     i86bi-linux-l2-adventerprisek9-15.1a.bin
+         - Server:     Windows server 2012 VM
+         - User:       webterm docker
+         - Automation: Windows 10 VM
