@@ -56,7 +56,7 @@ Automatic backup of start-up config to TFTP server will occur every Monday to Sa
         EEM  = ["event manager environment tftpserver tftp://192.168.99.254/",
                 "event manager environment filename "+filename,
                 "event manager applet Automatic_backup_weekdays",
-                "event timer cron cron-entry \"30 12 * * 1-5\"",
+                "event timer cron cron-entry \"30 12 * * 1-6\"",
                 "action 1.0 cli command \"enable\"",
                 "action 1.1 cli command \"debug event manager action cli\"",
                 "action 1.2 cli command \"conf t\"",
