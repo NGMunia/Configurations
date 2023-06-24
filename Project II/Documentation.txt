@@ -9,7 +9,7 @@ This configuration seeks to achieve the following:
          - restrict bandwidth social media sites (CS1)
          - block torrent sites.
          - Allow default traffic (CS0)
-    - Automate TFTP backup of all devices' configuration every weekday at 11:30pm using EEM
+    - Automate TFTP backup of all devices' configuration every weekday at 12:30 PM using EEM
     - Collect/analyze data traffic using:
          - Syslog
          - SNMP

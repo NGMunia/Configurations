@@ -47,7 +47,7 @@ def ntp_config():
 #EEM applets
 def EEM_config():
     """THis funtion will configure EEM applet to the router.
-Automatic backup of  start-up config to TFTP server will occur every Monday to Friday at 11:30PM"""
+Automatic backup of  start-up config to TFTP server will occur every Monday to Friday at 12:30 PM"""
     rprint('\n'f'[cyan]{EEM_config.__doc__}[/cyan]'+'\n')
     for devices in R1,R2,SW:
         net_connect=ConnectHandler(**devices)
@@ -56,13 +56,14 @@ Automatic backup of  start-up config to TFTP server will occur every Monday to F
         EEM  = ["event manager environment tftpserver tftp://192.168.99.254/",
                 "event manager environment filename "+filename,
                 "event manager applet Automatic_backup_weekdays",
-                "event timer cron cron-entry \"30 23 * * 1-5\"",
+                "event timer cron cron-entry \"30 12 * * 1-5\"",
                 "action 1.0 cli command \"enable\"",
-                "action 1.1 cli command \"conf t\"",
-                "action 1.2 cli command \"file prompt quiet\"",
-                "action 1.3 cli command \"do copy start $tftpserver$filename\"",
-                "action 1.4 cli command \"no file prompt quiet\"",
-                "action 1.5 syslog priority informational msg \"TFTP backup successful\""]
+                "action 1.1 cli command \"debug event manager action cli\"",
+                "action 1.2 cli command \"conf t\"",
+                "action 1.3 cli command \"file prompt quiet\"",
+                "action 1.4 cli command \"do copy start $tftpserver$filename\"",
+                "action 1.5 cli command \"no file prompt quiet\"",
+                "action 1.6 syslog priority informational msg \"TFTP backup successful\""]
         rprint(net_connect.send_config_set(EEM)+"\n")
         net_connect.save_config()
     
