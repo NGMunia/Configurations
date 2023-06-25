@@ -2,8 +2,9 @@
 from netmiko import ConnectHandler
 from rich import print as rprint
 from Device_List import SW, R1, R2
+import credentials
 
-for devices in R1, R2, SW:
+for devices in SW, R1, R2:
     net_connect=ConnectHandler(**devices)
     net_connect.enable()
     commands=input(f'Host {devices.get("host")}: Input show command: ')

@@ -3,7 +3,7 @@ from getpass import getpass
 from rich import print as rprint
 
 
-username  =  getpass("Username: ")
+username  =  input("Username: ")
 password  =  getpass("Password: ")
 secret    =  getpass("secret: ")
 
