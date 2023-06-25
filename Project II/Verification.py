@@ -9,3 +9,4 @@ for devices in SW, R1, R2:
     commands=input(f'Host {devices.get("host")}: Input show command: ')
     rprint(net_connect._send_command_str(commands)+'\n')
     
+    
