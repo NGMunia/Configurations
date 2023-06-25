@@ -10,3 +10,4 @@ for devices in SW, R1, R2:
     rprint(net_connect._send_command_str(commands)+'\n')
     
     
+    
