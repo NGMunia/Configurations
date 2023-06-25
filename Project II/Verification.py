@@ -2,7 +2,6 @@
 from netmiko import ConnectHandler
 from rich import print as rprint
 from Device_List import SW, R1, R2
-import credentials
 
 for devices in SW, R1, R2:
     net_connect=ConnectHandler(**devices)
