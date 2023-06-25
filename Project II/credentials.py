@@ -12,6 +12,6 @@ while True:
         break
     else:
         rprint("[red]Invalid Username or Password[/red]"+"\n")
-        username  =  getpass("Username: ")
+        username  =  input("Username: ")
         password  =  getpass("Password: ")
         secret    =  getpass("secret: ")
