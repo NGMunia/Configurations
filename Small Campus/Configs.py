@@ -67,6 +67,7 @@ def access_sw():
                         'service timestamps log datetime localtime year',
                         'service timestamps debug datetime localtime year']
         print(net_connect.send_config_set(ntp)+'\n')
+        net_connect.save_config()
 access_sw()
 
 
