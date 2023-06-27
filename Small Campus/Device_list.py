@@ -45,6 +45,13 @@ access  =   [
                     "username" : username,
                     "password" : password,
                     "secret" : secret
+                },
+                {
+                    "device_type" : "cisco_ios",
+                    "ip" : "10.1.40.40",
+                    "username" : username,
+                    "password" : password,
+                    "secret" : secret
                 }
             ]
 
