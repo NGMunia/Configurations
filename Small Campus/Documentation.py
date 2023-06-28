@@ -45,6 +45,21 @@ with open('C:\\Users\\Munia-virtual\\Desktop\\Scripts\\Configurations\\Small Cam
 
 
 
+#Documenting VLANs on access switches:
+with open('C:\\Users\\Munia-virtual\\Desktop\\Scripts\\Configurations\\Small Campus\\vlans.csv','w',newline='') as f:
+    write_data = csv.writer(f)
+    write_data.writerow(['Hostname','IP address','VLANs'])
+
+    for switches in access:
+        net_connect=ConnectHandler(**switches)
+        net_connect.enable()
+
+        output     = net_connect.send_command("show vlan brief")+'\n'
+        hostname   = net_connect.send_command("show run | include hostname")
+        ip_address = (f'{switches.get("ip")}')
+
+        write_data.writerow([hostname,ip_address,output])
+
 
 
 
