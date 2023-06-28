@@ -9,6 +9,8 @@ VLAN Name                             Status    Ports
 1003 token-ring-default               act/unsup 
 1004 fddinet-default                  act/unsup 
 1005 trnet-default                    act/unsup 
+
+
 "
 hostname SW2,10.1.40.20,"
 VLAN Name                             Status    Ports
@@ -20,6 +22,8 @@ VLAN Name                             Status    Ports
 1003 token-ring-default               act/unsup 
 1004 fddinet-default                  act/unsup 
 1005 trnet-default                    act/unsup 
+
+
 "
 hostname SW3,10.1.40.30,"
 VLAN Name                             Status    Ports
@@ -31,6 +35,8 @@ VLAN Name                             Status    Ports
 1003 token-ring-default               act/unsup 
 1004 fddinet-default                  act/unsup 
 1005 trnet-default                    act/unsup 
+
+
 "
 hostname SW4,10.1.40.40,"
 VLAN Name                             Status    Ports
@@ -41,4 +47,6 @@ VLAN Name                             Status    Ports
 1003 token-ring-default               act/unsup 
 1004 fddinet-default                  act/unsup 
 1005 trnet-default                    act/unsup 
+
+
 "

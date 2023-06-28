@@ -6,7 +6,7 @@ from Device_list import access, core_sw
 
 
 #Documenting Access_switches' interfaces and switchport access status:
-with open('C:\\Users\\Munia-virtual\\Desktop\\Scripts\\Configurations\\Small Campus\\Docs.csv','w') as f:
+with open('C:\\Users\\Munia-virtual\\Desktop\\Scripts\\Configurations\\Small Campus\\access_switches.csv','w') as f:
     write_data = csv.writer(f)
     write_data.writerow(['hostname','interface','switchport'])
     
@@ -46,7 +46,7 @@ with open('C:\\Users\\Munia-virtual\\Desktop\\Scripts\\Configurations\\Small Cam
 
 
 #Documenting VLANs on access switches:
-with open('C:\\Users\\Munia-virtual\\Desktop\\Scripts\\Configurations\\Small Campus\\vlans.csv','w',newline='') as f:
+with open('C:\\Users\\Munia-virtual\\Desktop\\Scripts\\Configurations\\Small Campus\\Access_sw_vlans.csv','w',newline='') as f:
     write_data = csv.writer(f)
     write_data.writerow(['Hostname','IP address','VLANs'])
 
@@ -54,7 +54,7 @@ with open('C:\\Users\\Munia-virtual\\Desktop\\Scripts\\Configurations\\Small Cam
         net_connect=ConnectHandler(**switches)
         net_connect.enable()
 
-        output     = net_connect.send_command("show vlan brief")+'\n'
+        output     = net_connect.send_command("show vlan brief")+'\n\n\n'
         hostname   = net_connect.send_command("show run | include hostname")
         ip_address = (f'{switches.get("ip")}')
 
