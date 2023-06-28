@@ -9,7 +9,8 @@ def core():
     - Vlans and Trunking
     - Inter-VLAN routing
     - Access-Control lists
-    - OSPF summarization"""
+    - OSPF summarization
+    - NTP"""
     rprint(f'[yellow]{core.__doc__}[/yellow]'+'\n')
 
     net_connect=ConnectHandler(**core_sw)
