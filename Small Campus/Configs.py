@@ -9,7 +9,7 @@ def core():
     - Vlans and Trunking
     - Inter-VLAN routing
     - Access-Control lists
-    - OSPF routing and summarization"""
+    - OSPF summarization"""
     rprint(f'[yellow]{core.__doc__}[/yellow]'+'\n')
 
     net_connect=ConnectHandler(**core_sw)
@@ -36,7 +36,10 @@ def core():
                     'clock timezone GMT +3',
                     'service timestamps log datetime localtime year',
                     'service timestamps debug datetime localtime year']
-        for commands in vlans, vlan_int, acls, ntp:
+        ospf     = ['router ospf 1',
+                    'area 123 range 10.1.0.0 255.255.192.0']
+        
+        for commands in vlans, vlan_int, acls, ntp, ospf:
             print(net_connect.send_config_set(commands)+'\n')
         net_connect.save_config()
 core()     
@@ -47,7 +50,8 @@ core()
 def access_sw():
     """Configuring Access Switches:
     - VLANs
-    - Access and Trunk ports"""
+    - Access and Trunk ports
+    - NTP"""
     rprint(f'[yellow]{access_sw.__doc__}[/yellow]'+'\n')
 
     for access_switches in access:
