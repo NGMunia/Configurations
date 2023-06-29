@@ -1,8 +1,8 @@
-Hostname,Version,Image,Serial-No,Uptime
-Core,,/opt/gns3/images/IOU/i86bi-linux-l2-adventerprisek9-15.1a.bin,['2048003'],34 minutes
-SW1,,/opt/gns3/images/IOU/i86bi-linux-l2-adventerprisek9-15.1a.bin,['2048005'],34 minutes
-SW2,,/opt/gns3/images/IOU/i86bi-linux-l2-adventerprisek9-15.1a.bin,['2048006'],34 minutes
-SW3,,/opt/gns3/images/IOU/i86bi-linux-l2-adventerprisek9-15.1a.bin,['2048004'],34 minutes
-SW4,,/opt/gns3/images/IOU/i86bi-linux-l2-adventerprisek9-15.1a.bin,['2048007'],34 minutes
-Firewall,15.5(2)T,/opt/gns3/images/IOU/i86bi-linux-l3-adventerprisek9-ms.155-2.T.,['2048002'],34 minutes
-R1,15.5(2)T,/opt/gns3/images/IOU/i86bi-linux-l3-adventerprisek9-ms.155-2.T.,['2048001'],34 minutes
+Hostname,IP address,Version,Image,Serial-No,Uptime
+Core,10.1.40.1,,/opt/gns3/images/IOU/i86bi-linux-l2-adventerprisek9-15.1a.bin,['2048003'],54 minutes
+SW1,10.1.40.10,,/opt/gns3/images/IOU/i86bi-linux-l2-adventerprisek9-15.1a.bin,['2048005'],54 minutes
+SW2,10.1.40.20,,/opt/gns3/images/IOU/i86bi-linux-l2-adventerprisek9-15.1a.bin,['2048006'],54 minutes
+SW3,10.1.40.30,,/opt/gns3/images/IOU/i86bi-linux-l2-adventerprisek9-15.1a.bin,['2048004'],54 minutes
+SW4,10.1.40.40,,/opt/gns3/images/IOU/i86bi-linux-l2-adventerprisek9-15.1a.bin,['2048007'],54 minutes
+Firewall,192.168.1.2,15.5(2)T,/opt/gns3/images/IOU/i86bi-linux-l3-adventerprisek9-ms.155-2.T.,['2048002'],54 minutes
+R1,192.168.1.6,15.5(2)T,/opt/gns3/images/IOU/i86bi-linux-l3-adventerprisek9-ms.155-2.T.,['2048001'],54 minutes
