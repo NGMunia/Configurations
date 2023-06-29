@@ -14,13 +14,13 @@ with open('C:\\Users\\Munia-virtual\\Desktop\\Scripts\\Configurations\\Small Cam
             net_connect=ConnectHandler(**devices)
             net_connect.enable()
 
-            output  = net_connect.send_command("show version",use_textfsm=True)[0]
+            output   = net_connect.send_command("show version",use_textfsm=True)[0]
 
             hostname = output.get("hostname")
-            version = output.get("version")
-            image = output.get("running_image")
-            serial = output.get("serial")
-            uptime = output.get("uptime")
+            version  = output.get("version")
+            image    = output.get("running_image")
+            serial   = output.get("serial")
+            uptime   = output.get("uptime")
 
             write_data.writerow([hostname,version,image,serial,uptime])
            
