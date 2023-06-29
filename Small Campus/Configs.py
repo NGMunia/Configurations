@@ -1,7 +1,7 @@
 #Libraries
 from netmiko import ConnectHandler
 from rich import print as rprint
-from Device_list import core_sw, R1_Edge, FW_1, access
+from Device_list import core_sw, SW1,SW2,SW3,SW4,R1_Edge,FW_1
 
 #COnfiguring Core-Switch:
 def core():
@@ -55,7 +55,7 @@ def access_sw():
     - NTP"""
     rprint(f'[yellow]{access_sw.__doc__}[/yellow]'+'\n')
 
-    for access_switches in access:
+    for access_switches in SW1,SW2,SW3,SW4:
         net_connect=ConnectHandler(**access_switches)
         net_connect.enable()
         vlan_list  = input(f'SW {access_switches.get("ip")} VLANs: ')

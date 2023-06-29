@@ -24,34 +24,36 @@ R1_Edge =   {
                 "secret" : secret
             }
 
-access  =   [ 
-                {
-                    "device_type" : "cisco_ios",
-                    "ip" : "10.1.40.10",
-                    "username" : username,
-                    "password" : password,
-                    "secret" : secret
-                },
-                {
+SW1 =       {
+                "device_type" : "cisco_ios",
+                "ip" : "10.1.40.10",
+                "username" : username,
+                "password" : password,
+                "secret" : secret
+            }
+
+SW2=        {
                     "device_type" : "cisco_ios",
                     "ip" : "10.1.40.20",
                     "username" : username,
                     "password" : password,
                     "secret" : secret
-                },
-                {
+            }
+
+SW3=        {
                     "device_type" : "cisco_ios",
                     "ip" : "10.1.40.30",
                     "username" : username,
                     "password" : password,
                     "secret" : secret
-                },
-                {
+            }
+
+SW4=        {
                     "device_type" : "cisco_ios",
                     "ip" : "10.1.40.40",
                     "username" : username,
                     "password" : password,
                     "secret" : secret
-                }
-            ]
+            }
+            
 

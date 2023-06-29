@@ -1,4 +1,0 @@
-Hostname,Version,Image,Serial
-hostname R1,15.5(2)T,/opt/gns3/images/IOU/i86bi-linux-l3-adventerprisek9-ms.155-2.T.,['2048001']
-hostname Core,,/opt/gns3/images/IOU/i86bi-linux-l2-adventerprisek9-15.1a.bin,['2048003']
-hostname Firewall,15.5(2)T,/opt/gns3/images/IOU/i86bi-linux-l3-adventerprisek9-ms.155-2.T.,['2048002']
