@@ -1,8 +1,1 @@
 Hostname,Version,Image,Serial-No,Uptime
-Core,,/opt/gns3/images/IOU/i86bi-linux-l2-adventerprisek9-15.1a.bin,['2048003'],28 minutes
-SW1,,/opt/gns3/images/IOU/i86bi-linux-l2-adventerprisek9-15.1a.bin,['2048005'],28 minutes
-SW2,,/opt/gns3/images/IOU/i86bi-linux-l2-adventerprisek9-15.1a.bin,['2048006'],28 minutes
-SW3,,/opt/gns3/images/IOU/i86bi-linux-l2-adventerprisek9-15.1a.bin,['2048004'],28 minutes
-SW4,,/opt/gns3/images/IOU/i86bi-linux-l2-adventerprisek9-15.1a.bin,['2048007'],28 minutes
-Firewall,15.5(2)T,/opt/gns3/images/IOU/i86bi-linux-l3-adventerprisek9-ms.155-2.T.,['2048002'],28 minutes
-R1,15.5(2)T,/opt/gns3/images/IOU/i86bi-linux-l3-adventerprisek9-ms.155-2.T.,['2048001'],28 minutes
